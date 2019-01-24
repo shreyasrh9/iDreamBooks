@@ -16,7 +16,7 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
+        test: /\.less$/,
         use: [
           {
             loader: "style-loader"
@@ -24,12 +24,13 @@ module.exports = {
           {
             loader: "css-loader",
             options: {
-              modules: true,
-              importLoaders: 1,
-              localIdentName: "[name]_[local]_[hash:base64]",
               sourceMap: true,
-              minimize: true
+              modules: true,
+              localIdentName: "[local]___[hash:base64:5]"
             }
+          },
+          {
+            loader: "less-loader"
           }
         ]
       }
