@@ -26,7 +26,7 @@ export const loadReviewPublicationsReducer = (state = initialState, action) => {
             return { ...state, loading: true, topReviewedBooksDetails: action.topReviewedBooksDetails, genreFilter: selectOptions.genreFilter }
 
         case actionTypes.RECENTLYREVIEWEDTOPPUBLICATIONS_SUCCESS:
-            return { ...state, data: action.data }
+            return { ...state, topReviewedBooksDetails: action.topReviewedBooksDetails }
 
         default:
             return state;

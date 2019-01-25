@@ -14,12 +14,10 @@ export const loadGenreListEpic = (action$, state$, { retrieveViaAjax }) => actio
     )
 );
 
-// export const topPublicationsEpic = (action$, state$, { retrieveViaAjax }) => action$.pipe(
-//     ofType(actionTypes.RECENTLYREVIEWEDTOPPUBLICATIONS),
-//     switchMap(action => retrieveViaAjax(recentlyReviewedTopPublicationsUrl(action.genre))),
-//     mergeMap((result) => {
-
-//         return { type: actionTypes.RECENTLYREVIEWEDTOPPUBLICATIONS_SUCCESS, data: result };
-
-//     })
-// )
+export const topPublicationsEpic = (action$, state$, { retrieveViaAjax }) => action$.pipe(
+    ofType(actionTypes.RECENTLYREVIEWEDTOPPUBLICATIONS),
+    switchMap(action => retrieveViaAjax(recentlyReviewedTopPublicationsUrl(action.genre))),
+    map((result) => {
+        return { type: actionTypes.RECENTLYREVIEWEDTOPPUBLICATIONS_SUCCESS, topReviewedBooksDetails: result.response };
+    })
+)

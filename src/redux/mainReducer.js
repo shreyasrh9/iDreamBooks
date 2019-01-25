@@ -10,7 +10,7 @@ const retrieveViaAjax = (url) => ajax({
     responseType: 'json'
 });
 
-import { loadGenreListEpic } from './epics/loadReviewPublicationsEpic'
+import { loadGenreListEpic, topPublicationsEpic } from './epics/loadReviewPublicationsEpic'
 
 import { loadReviewPublicationsReducer } from './reducers/loadReviewPublicationsReducer'
 
@@ -18,4 +18,4 @@ export const mainReducer = combineReducers({
     loadReviewPublicationsReducer: loadReviewPublicationsReducer
 })
 
-export const epics = (...args) => combineEpics(loadGenreListEpic)(...args, { ajax, retrieveViaAjax })
+export const epics = (...args) => combineEpics(loadGenreListEpic, topPublicationsEpic)(...args, { ajax, retrieveViaAjax })

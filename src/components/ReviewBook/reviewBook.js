@@ -7,7 +7,7 @@ import './reviewBook.css';
 import Moment from 'react-moment';
 
 const reviewBook = (props) => (
-    <div className="reviewBook" onClick={props.clicked}>
+    <div className="reviewBook" onClick={() => props.bookClicked(props.bookDetails.isbns)}>
         <Row>
             <Col>
                 <BookImage
@@ -15,7 +15,7 @@ const reviewBook = (props) => (
                     title={props.bookDetails.title}
                     author={props.bookDetails.author} />
             </Col>
-            <Col style={{textAlign:"left"}}>
+            <Col style={{ textAlign: "left" }}>
                 <FontAwesomeIcon icon={faQuoteLeft} style={{ float: "left" }} />
                 <br />
                 <span>{props.bookDetails.review_snippet}</span>
@@ -23,9 +23,9 @@ const reviewBook = (props) => (
                 <FontAwesomeIcon icon={faQuoteRight} style={{ float: "right" }} />
                 <br />
                 <h3>{props.bookDetails.review_publication_name}</h3>
-                <span className="rating">Rating  </span><img className="rating_image" src={props.bookDetails.review_rating_image}/>
+                <span className="rating">Rating  </span><img className="rating_image" src={props.bookDetails.review_rating_image} />
                 <br />
-                <span className="rating">Reviewed on { '  ' }
+                <span className="rating">Reviewed on {'  '}
                     <Moment format="MMM DD YYYY">
                         {props.bookDetails.review_date}
                     </Moment>

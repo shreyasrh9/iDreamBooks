@@ -21,23 +21,24 @@ class BookListing extends Component {
 
   handleChange = (selectedOption) => {
     this.setState({ selectedOption });
+    this.props.hadleGenreChange(selectedOption)
+  }
+
+  fetchReviews = (key) => {
+    console.log(key)
   }
 
   render() {
     const { selectedOption } = this.state;
-    const bookDetails = this.props.loadReviewPublicationsReducer.topReviewedBooksDetails
+    
     let booksList = [];
-    console.log(bookDetails)
-
-    for (var key in bookDetails) {
+    
+    for (var key in this.props.loadReviewPublicationsReducer.topReviewedBooksDetails) {
       
       booksList.push(
-        <ReviewBook bookDetails={bookDetails[key]} />
+        <ReviewBook key={key} bookDetails={this.props.loadReviewPublicationsReducer.topReviewedBooksDetails[key]} bookClicked={this.fetchReviews}/>
       )
     }
-
-    console.log(booksList)
-
 
     return (
       <div>
