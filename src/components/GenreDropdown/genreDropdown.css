@@ -1,3 +1,14 @@
-.dropdown-menu{
-    width: 500px !important
-}
+.colMenu {
+    word-wrap: break-word;
+  }
+  
+.colMenu:hover {
+    background-color: #0c233f;
+    color: white;
+    border-radius: 5px;
+  }
+  
+.dropdown-menu {
+    width: 500px !important;
+  }
+  

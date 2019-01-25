@@ -5,13 +5,15 @@ import {
     DropdownMenu,
 } from 'reactstrap';
 
+import './menuDropdowns.less'
+
 const menuDropdowns = (props) =>{
     return (
         <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav caret>
                 {props.heading}
                             </DropdownToggle>
-            <DropdownMenu right>
+            <DropdownMenu className="dropdown-menu" right>
                 {props.options}
             </DropdownMenu>
         </UncontrolledDropdown>

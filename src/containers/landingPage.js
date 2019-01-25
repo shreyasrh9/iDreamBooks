@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import * as config from '../config'
 import style from './landingPage.less'
 import Header from './Header/header'
+import BookListing from '../containers/BooksListing/bookListing'
 
 import {
     Collapse,
@@ -21,7 +22,11 @@ class LandingPage extends Component {
 
     render() {
         return (
-            <Header />
+            <div>
+                <Header />
+                <br/>
+                <BookListing />
+            </div>
         )
     }
 }
