@@ -21,3 +21,4 @@ export const topPublicationsEpic = (action$, state$, { retrieveViaAjax }) => act
         return { type: actionTypes.RECENTLYREVIEWEDTOPPUBLICATIONS_SUCCESS, topReviewedBooksDetails: result.response };
     })
 )
+

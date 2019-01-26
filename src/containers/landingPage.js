@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 import * as config from '../config'
 import style from './landingPage.less'
-import Header from './Header/header'
 import BookListing from '../containers/BooksListing/bookListing'
 
 import {
@@ -23,8 +22,6 @@ class LandingPage extends Component {
     render() {
         return (
             <div>
-                <Header />
-                <br/>
                 <BookListing />
             </div>
         )

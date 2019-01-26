@@ -8,6 +8,9 @@ import * as jobActions from '../../actions'
 import { bindActionCreators } from 'redux';
 import Select from 'react-select';
 import ReviewBook from '../../components/ReviewBook/reviewBook'
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
+import Header from '../../containers/Header/header'
+
 
 class BookListing extends Component {
 
@@ -24,24 +27,38 @@ class BookListing extends Component {
     this.props.hadleGenreChange(selectedOption)
   }
 
-  fetchReviews = (key) => {
-    console.log(key)
+  fetchReviews = (searchKey, imageUrl) => {
+    if (searchKey.indexOf(',') > -1) {
+      searchKey = searchKey.split(',')[0] 
+    }
+    
+
+    const queryParams = [];
+    queryParams.push('searchKey=' + searchKey);
+    queryParams.push('imageUrl=' + imageUrl);
+    
+    const queryString = queryParams.join('&');
+    this.props.history.push({
+      pathname: '/review',
+      search: '?' + queryString
+  });
   }
 
   render() {
     const { selectedOption } = this.state;
-    
+
     let booksList = [];
-    
+
     for (var key in this.props.loadReviewPublicationsReducer.topReviewedBooksDetails) {
-      
       booksList.push(
-        <ReviewBook key={key} bookDetails={this.props.loadReviewPublicationsReducer.topReviewedBooksDetails[key]} bookClicked={this.fetchReviews}/>
+        <ReviewBook key={key} bookDetails={this.props.loadReviewPublicationsReducer.topReviewedBooksDetails[key]} bookClicked={this.fetchReviews} />
       )
     }
 
     return (
       <div>
+        <Header />
+        <br />
         <Container>
           <h2 className="heading">{config.LANDING_PAGE_HEADING}</h2>
           <br />
@@ -75,4 +92,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return bindActionCreators(jobActions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BookListing);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BookListing));

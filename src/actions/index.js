@@ -14,3 +14,10 @@ export function hadleGenreChange(genre) {
         genre: genre.value
     }
 }
+
+export function fetchReviews(searchKey) {
+    return{
+        type: actionTypes.LOADREVIEWS,
+        searchKey: searchKey
+    }
+}

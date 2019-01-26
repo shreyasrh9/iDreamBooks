@@ -7,7 +7,7 @@ import './reviewBook.css';
 import Moment from 'react-moment';
 
 const reviewBook = (props) => (
-    <div className="reviewBook" onClick={() => props.bookClicked(props.bookDetails.isbns)}>
+    <div className="reviewBook" onClick={() => props.bookClicked(props.bookDetails.isbns, props.bookDetails.review_publication_logo)}>
         <Row>
             <Col>
                 <BookImage
