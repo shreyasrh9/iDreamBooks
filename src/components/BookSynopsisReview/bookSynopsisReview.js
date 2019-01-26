@@ -12,9 +12,9 @@ const bookSynopsisReview = (props) => {
     const reviewDetails = props.review.reviewDetails
     let reviewsList = [];
 
-    for (var key in reviewDetails.book.review_count) {
+    for (let i=0;i<reviewDetails.book.review_count;i++) {
         reviewsList.push(
-          <ReviewBook key={key} reviewDetails={reviewDetails} />
+          <ReviewBook key={i} reviewDetail={reviewDetails.book.critic_reviews[i]} title={reviewDetails.book.title} />
         )
       }
     return (
@@ -34,14 +34,14 @@ const bookSynopsisReview = (props) => {
                                 <img src={reviewDetails.book.to_read_or_not} />
                                 :
                                 <div>
-                                    <h6>No critic rating</h6>
-                                    <h7 className="reviewSpan">Waiting for minimum critic reviews</h7>
+                                    <h5>No critic rating</h5>
+                                    <h6 className="reviewSpan">Waiting for minimum critic reviews</h6>
                                 </div>
 
                         }
                         <br />
-                        <a href="#critic_reviews">
-                            <h5 className="reviewHeading">See {reviewDetails.book.review_count} Critic Review</h5>
+                        <a href="#reviews">
+                            <h4 className="reviewHeading">See {reviewDetails.book.review_count} Critic Review</h4>
                         </a>
                         <br />
                         <FontAwesomeIcon icon={faQuoteLeft} style={{ float: "left" }} />
@@ -56,10 +56,11 @@ const bookSynopsisReview = (props) => {
                     </Col>
                 </Row>
 
-                <section className="reviews">
-                    {booksList}
-                </section>
+                
             </Container>
+            <section className="reviews" classId="reviews">
+                    {reviewsList}
+                </section>
         </div>
     )
 }

@@ -6,3 +6,12 @@
 .reviewSpan {
   color: #4d4c48;
 }
+
+.reviews{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: left;
+    width: 80%;
+    margin: auto;
+    background-color: white;
+}
