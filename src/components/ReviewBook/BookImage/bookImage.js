@@ -1,6 +1,6 @@
 import React from 'react'
 import {Motion, spring} from 'react-motion';
-import './bookIMage.css'
+import './bookImage.css'
 
 class BookImage extends React.Component {
   constructor() {

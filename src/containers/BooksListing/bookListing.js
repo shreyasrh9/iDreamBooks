@@ -12,17 +12,22 @@ import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import Header from '../../containers/Header/header'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDoubleDown, faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons'
-import $ from "jquery";
+
+import SkeletonReviewListing from '../../components/SkeltelonLoad/reviewListing'
+
+
 
 let booksArray = [];
 let temp = []
+let loadingPage = true;
 class BookListing extends Component {
 
   state = {
     selectedOption: { "label": config.GENRES_VALUES[0], "value": config.GENRES[0] },
     isSortedDescending: true,
     sortBy: 'Descending',
-    search: ''
+    search: '',
+    loadingPage: true
   }
 
   componentDidMount() {
@@ -104,19 +109,17 @@ class BookListing extends Component {
     this.setState({
       search: event.target.value
     })
-    
-    console.log("MLSMD:MSPD:L:SD<:  "+event.target.value)
-    if (event.target.value == '') {
-      booksArray = temp
-    } else {
 
-      let filtered = booksArray.filter((book) => {
-        return book.title.toLowerCase().indexOf(event.target.value) !== -1
-      }
-      )
+    console.log("MLSMD:MSPD:L:SD<:  " + event.target.value)
+    booksArray = temp
+    if (event.target.value != "") {
+      let filtered = booksArray.filter(book => {
+        return book.title.toLowerCase().indexOf(event.target.value) !== -1;
+      });
 
-      booksArray = filtered
+      booksArray = filtered;
     }
+
 
   }
 
@@ -132,8 +135,16 @@ class BookListing extends Component {
       )
     }
 
+    loadingPage = this.props.loadReviewPublicationsReducer.loading
+
+
     return (
       <div>
+        {/* <LoadingOverlay 
+          active={loadingPage}
+          spinner
+          text='Loading your content...'
+        > */}
         <Header />
         <br />
         <Container>
@@ -162,11 +173,27 @@ class BookListing extends Component {
           <Row>
             <input className="filterInput" value={this.state.search} onChange={this.updateSearch} />
           </Row>
-
+          <br />
+          {
+            loadingPage ?
+              <div>
+                <Container>
+                  <SkeletonReviewListing width={80} height={200} count={6} />
+                  <br />
+                  <SkeletonReviewListing width={80} height={200} count={6} />
+                </Container>
+              </div>
+              : null
+          }
         </Container>
+
+
+
+
         <section className="books">
           {booksList}
         </section>
+        {/* </LoadingOverlay> */}
       </div>
     )
   }

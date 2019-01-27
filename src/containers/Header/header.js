@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import * as config from '../../config'
 import style from './header.less'
 import GenreDropDown from '../../components/GenreDropdown/genreDropdown'
-import MenuDropdowns from '../../components/MenuDropdowns/menuDropdowns'
+import MenuDropdowns from '../../components/MenuDropDowns/menuDropdowns'
 
 import {
     Collapse,

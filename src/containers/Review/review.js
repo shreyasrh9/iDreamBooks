@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Header from '../../containers/Header/header'
 import BookSynopsisReview from '../../components/BookSynopsisReview/bookSynopsisReview'
+import Skeleton from 'react-loading-skeleton';
+
 
 let imageUrl = ''
 class Review extends Component {
@@ -23,9 +25,6 @@ class Review extends Component {
                 imageUrl = param[1]
 
             }
-
-
-
             this.props.fetchReviews(searchKey)
         }
 
@@ -34,17 +33,19 @@ class Review extends Component {
     render() {
         let reviewRatingPresent = true
         if (this.props.loadReviewReducer.loadingReview) {
-            if(this.props.loadReviewReducer.reviewDetails.book.to_read_or_not === undefined){
+            if (this.props.loadReviewReducer.reviewDetails.book.to_read_or_not === undefined) {
                 reviewRatingPresent = false
             }
         }
         return (
             <div>
                 <Header />
+
                 {this.props.loadReviewReducer.loadingReview ?
-                    <BookSynopsisReview review={this.props.loadReviewReducer} imageUrl={imageUrl} reviewRatingPresent={reviewRatingPresent}/>
-                    : null
+                    <BookSynopsisReview review={this.props.loadReviewReducer} imageUrl={imageUrl} reviewRatingPresent={reviewRatingPresent} />
+                    : <Skeleton width={200} height={500} count={8} />
                 }
+
             </div>
         )
     }

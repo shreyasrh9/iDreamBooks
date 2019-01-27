@@ -8,15 +8,16 @@ import BookImage from '../../components/ReviewBook/BookImage/bookImage'
 import ReactTextCollapse from 'react-text-collapse'
 import ReviewBook from './ReviewBlock/reviewBlock'
 
+
 const bookSynopsisReview = (props) => {
     const reviewDetails = props.review.reviewDetails
     let reviewsList = [];
 
-    for (let i=0;i<reviewDetails.book.review_count;i++) {
+    for (let i = 0; i < reviewDetails.book.review_count; i++) {
         reviewsList.push(
-          <ReviewBook key={i} reviewDetail={reviewDetails.book.critic_reviews[i]} title={reviewDetails.book.title} />
+            <ReviewBook key={i} reviewDetail={reviewDetails.book.critic_reviews[i]} title={reviewDetails.book.title} />
         )
-      }
+    }
     return (
         <div>
             <Container>
@@ -56,11 +57,11 @@ const bookSynopsisReview = (props) => {
                     </Col>
                 </Row>
 
-                
+
             </Container>
             <section className="reviews" classId="reviews">
-                    {reviewsList}
-                </section>
+                {reviewsList}
+            </section>
         </div>
     )
 }

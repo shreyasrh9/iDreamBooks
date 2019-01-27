@@ -2,7 +2,7 @@ import * as actionTypes from '../../actions/actionTypes'
 import * as config from '../../config'
 
 const initialState = {
-    loading: false
+    loading: true
 }
 
 const generateSelectOptions = () => {
@@ -23,10 +23,10 @@ export const loadReviewPublicationsReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.LOADGENRESELECTLIST_SUCCESS:
             const selectOptions = generateSelectOptions()
-            return { ...state, loading: true, topReviewedBooksDetails: action.topReviewedBooksDetails, genreFilter: selectOptions.genreFilter }
+            return { ...state, loading: false, topReviewedBooksDetails: action.topReviewedBooksDetails, genreFilter: selectOptions.genreFilter }
 
         case actionTypes.RECENTLYREVIEWEDTOPPUBLICATIONS_SUCCESS:
-            return { ...state, topReviewedBooksDetails: action.topReviewedBooksDetails }
+            return { ...state, topReviewedBooksDetails: action.topReviewedBooksDetails, loading: false }
 
         default:
             return state;
