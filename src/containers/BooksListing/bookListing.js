@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col, Container } from 'reactstrap';
-import classnames from 'classnames';
+import { Row, Col, Container } from 'reactstrap';
 import './bookListing.css'
 import * as config from '../../config'
 import * as jobActions from '../../actions'
 import { bindActionCreators } from 'redux';
 import Select from 'react-select';
 import ReviewBook from '../../components/ReviewBook/reviewBook'
-import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Header from '../../containers/Header/header'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDoubleDown, faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons'
@@ -97,7 +96,7 @@ class BookListing extends Component {
   }
 
   convertToArray = (books) => {
-    if (booksArray.length == 0) {
+    if (this.state.search == "") {
       booksArray = []
       for (var key in books) {
         booksArray.push(books[key])
@@ -105,6 +104,7 @@ class BookListing extends Component {
       temp = booksArray
     }
   }
+
 
   updateSearch = (event) => {
     this.setState({
@@ -165,9 +165,9 @@ class BookListing extends Component {
               }
             </span>
           </Row>
-          <br/>
+          <br />
           <Row>
-          <span class="spanHeading" >Filter By Title {'  '}<input className="filterInput" value={this.state.search} onChange={this.updateSearch} /></span>
+            <span class="spanHeading" >Filter By Title {'  '}<input className="filterInput" value={this.state.search} onChange={this.updateSearch} /></span>
           </Row>
           <br />
           {

@@ -1,5 +1,4 @@
 import * as actionTypes from '../../actions/actionTypes'
-import * as config from '../../config'
 
 const initialState = {
     loadingReview: false

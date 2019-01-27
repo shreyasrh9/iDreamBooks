@@ -2,10 +2,7 @@ import React from 'react'
 import { Row, Col, Container } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuoteLeft, faQuoteRight } from '@fortawesome/free-solid-svg-icons'
-import Moment from 'react-moment';
 import './bookSynopsisReview.css'
-import BookImage from '../../components/ReviewBook/BookImage/bookImage'
-import ReactTextCollapse from 'react-text-collapse'
 import ReviewBook from './ReviewBlock/reviewBlock'
 
 

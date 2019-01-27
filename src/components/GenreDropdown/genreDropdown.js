@@ -2,21 +2,9 @@ import React from 'react'
 import style from './genreDropdown.less'
 import './genreDropdown.css'
 import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
     DropdownItem,
-    Container,
     Row,
     Col
-
 } from 'reactstrap';
 
 

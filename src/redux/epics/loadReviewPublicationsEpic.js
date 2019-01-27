@@ -1,6 +1,5 @@
 import { ofType } from 'redux-observable';
-import { mergeMap, switchMap, map, filter } from 'rxjs/operators';
-import { merge, of } from 'rxjs'
+import { switchMap, map } from 'rxjs/operators';
 import * as actionTypes from '../../actions/actionTypes'
 
 const recentlyReviewedTopPublicationsUrl = (genre) => `https://idreambooks.com/api/publications/recent_recos.json?key=def3b3e41bfbbebbc04f7cb59ad6e96079374df5&slug=${genre}`
