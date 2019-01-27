@@ -24,9 +24,8 @@ const genreDropdown = (props) => {
     return (
         
         <DropdownItem className={style.genreList}>
-            <Row >
-                <Col className={style.colMenu}>{props.genreLeft}</Col>
-                <Col className={style.colMenu}>{props.genreRight}</Col>
+            <Row className="dropDownValue">
+                <Col className={style.colMenu}>{props.genre}</Col>
             </Row>
         
         </DropdownItem>

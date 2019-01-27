@@ -37,12 +37,13 @@ class Header extends Component {
     render() {
 
         const genres = config.GENRES
+        const genresValue = config.GENRES_VALUES
         const lists = config.LISTS
         let genreComponents = []
         let listComponents = []
 
-        for (let i = 0; i < genres.length; i += 2) {
-            genreComponents.push(<GenreDropDown key={i} genreLeft={genres[i]} genreRight={genres[i + 1]} />)
+        for (let i = 0; i < genres.length; i ++) {
+            genreComponents.push(<GenreDropDown key={i} genre={genresValue[i]} />)
         }
 
         for (let i = 0; i < lists.length; i++) {
@@ -61,6 +62,8 @@ class Header extends Component {
                         <MenuDropdowns heading="Genres" options={genreComponents} />
                         <MenuDropdowns heading="Lists" options={listComponents} />
                         <MenuDropdowns heading="About" options={listComponents} />
+
+
                         <NavItem>
                             <NavLink onClick={this.loginModal} className={style.loginModalLink}>Login</NavLink>
                         </NavItem>

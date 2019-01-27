@@ -7,12 +7,12 @@ import {
 
 import './menuDropdowns.less'
 
-const menuDropdowns = (props) =>{
+const menuDropdowns = (props) => {
     return (
         <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav caret>
                 {props.heading}
-                            </DropdownToggle>
+            </DropdownToggle>
             <DropdownMenu className="dropdown-menu" right>
                 {props.options}
             </DropdownMenu>

@@ -10,12 +10,19 @@ import Select from 'react-select';
 import ReviewBook from '../../components/ReviewBook/reviewBook'
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import Header from '../../containers/Header/header'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleDoubleDown, faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons'
+import $ from "jquery";
 
-
+let booksArray = [];
+let temp = []
 class BookListing extends Component {
 
   state = {
-    selectedOption: { "label": config.GENRES_VALUES[0], "value": config.GENRES[0] }
+    selectedOption: { "label": config.GENRES_VALUES[0], "value": config.GENRES[0] },
+    isSortedDescending: true,
+    sortBy: 'Descending',
+    search: ''
   }
 
   componentDidMount() {
@@ -29,29 +36,99 @@ class BookListing extends Component {
 
   fetchReviews = (searchKey, imageUrl) => {
     if (searchKey.indexOf(',') > -1) {
-      searchKey = searchKey.split(',')[0] 
+      searchKey = searchKey.split(',')[0]
     }
-    
+
 
     const queryParams = [];
     queryParams.push('searchKey=' + searchKey);
     queryParams.push('imageUrl=' + imageUrl);
-    
+
     const queryString = queryParams.join('&');
     this.props.history.push({
       pathname: '/review',
       search: '?' + queryString
-  });
+    });
+  }
+
+  sortByDate = (books) => {
+
+
+    console.log(JSON.stringify(booksArray[0]))
+
+    if (books === undefined) {
+
+    } else {
+      sortedList = booksArray.sort((a, b) => {
+        return a.review_date.localeCompare(b.review_date)
+      }
+      )
+    }
+
+  }
+
+  sortByAscendingDate = () => {
+    this.setState({
+      isSortedDescending: !this.state.isSortedDescending
+    })
+    console.log("@#(_))@(#__@#)_" + this.state.isSortedDescending)
+    let aSortedList = booksArray.sort((a, b) => {
+      if (!this.state.isSortedDescending) {
+        this.setState({
+          sortBy: 'Descending'
+        })
+        return a.review_date.localeCompare(b.review_date)
+      } else {
+        this.setState({
+          sortBy: 'Ascending'
+        })
+        return b.review_date.localeCompare(a.review_date)
+      }
+    }
+    )
+
+    booksArray = aSortedList
+
+  }
+
+  convertToArray = (books) => {
+    if (booksArray.length == 0) {
+      for (var key in books) {
+        booksArray.push(books[key])
+      }
+      temp = booksArray
+    }
+  }
+
+  updateSearch = (event) => {
+    this.setState({
+      search: event.target.value
+    })
+    
+    console.log("MLSMD:MSPD:L:SD<:  "+event.target.value)
+    if (event.target.value == '') {
+      booksArray = temp
+    } else {
+
+      let filtered = booksArray.filter((book) => {
+        return book.title.toLowerCase().indexOf(event.target.value) !== -1
+      }
+      )
+
+      booksArray = filtered
+    }
+
   }
 
   render() {
     const { selectedOption } = this.state;
+    this.convertToArray(this.props.loadReviewPublicationsReducer.topReviewedBooksDetails)
 
     let booksList = [];
 
-    for (var key in this.props.loadReviewPublicationsReducer.topReviewedBooksDetails) {
+    for (let i = 0; i < booksArray.length; i++) {
       booksList.push(
-        <ReviewBook key={key} bookDetails={this.props.loadReviewPublicationsReducer.topReviewedBooksDetails[key]} bookClicked={this.fetchReviews} />
+        <ReviewBook key={i} bookDetails={booksArray[i]} bookClicked={this.fetchReviews} />
       )
     }
 
@@ -72,6 +149,19 @@ class BookListing extends Component {
             </Col>
           </Row>
 
+
+          <Row>
+            <span class="spanHeading" onClick={this.sortByAscendingDate}>Sort By Review Date {'  '}
+              {this.state.isSortedDescending ?
+                <FontAwesomeIcon icon={faAngleDoubleDown} />
+                : <FontAwesomeIcon icon={faAngleDoubleUp} />
+              }
+            </span>
+          </Row>
+
+          <Row>
+            <input className="filterInput" value={this.state.search} onChange={this.updateSearch} />
+          </Row>
 
         </Container>
         <section className="books">
