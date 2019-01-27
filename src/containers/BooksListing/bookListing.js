@@ -98,6 +98,7 @@ class BookListing extends Component {
 
   convertToArray = (books) => {
     if (booksArray.length == 0) {
+      booksArray = []
       for (var key in books) {
         booksArray.push(books[key])
       }
@@ -140,11 +141,6 @@ class BookListing extends Component {
 
     return (
       <div>
-        {/* <LoadingOverlay 
-          active={loadingPage}
-          spinner
-          text='Loading your content...'
-        > */}
         <Header />
         <br />
         <Container>
@@ -169,9 +165,9 @@ class BookListing extends Component {
               }
             </span>
           </Row>
-
+          <br/>
           <Row>
-            <input className="filterInput" value={this.state.search} onChange={this.updateSearch} />
+          <span class="spanHeading" >Filter By Title {'  '}<input className="filterInput" value={this.state.search} onChange={this.updateSearch} /></span>
           </Row>
           <br />
           {
@@ -193,7 +189,7 @@ class BookListing extends Component {
         <section className="books">
           {booksList}
         </section>
-        {/* </LoadingOverlay> */}
+
       </div>
     )
   }
