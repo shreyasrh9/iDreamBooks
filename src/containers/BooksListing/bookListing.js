@@ -19,6 +19,7 @@ import SkeletonReviewListing from '../../components/SkeltelonLoad/reviewListing'
 let booksArray = [];
 let temp = []
 let loadingPage = true;
+let isGenreChanged = true;
 class BookListing extends Component {
 
   state = {
@@ -33,10 +34,11 @@ class BookListing extends Component {
     this.props.loadGenreSelectList()
   }
 
-  handleChange = (selectedOption) => {
+  handleChange = selectedOption => {
+    isGenreChanged = true;
     this.setState({ selectedOption });
-    this.props.hadleGenreChange(selectedOption)
-  }
+    this.props.hadleGenreChange(selectedOption);
+  };
 
   fetchReviews = (searchKey, imageUrl) => {
     if (searchKey.indexOf(',') > -1) {
@@ -55,45 +57,40 @@ class BookListing extends Component {
     });
   }
 
-  sortByDate = (books) => {
-
-
-    console.log(JSON.stringify(booksArray[0]))
+  sortByDate = books => {
+    console.log(JSON.stringify(booksArray[0]));
 
     if (books === undefined) {
-
     } else {
       sortedList = booksArray.sort((a, b) => {
-        return a.review_date.localeCompare(b.review_date)
-      }
-      )
+        return a.review_date.localeCompare(b.review_date);
+      });
     }
-
-  }
+    isGenreChanged = false;
+  };
 
   sortByAscendingDate = () => {
     this.setState({
       isSortedDescending: !this.state.isSortedDescending
-    })
-    console.log("@#(_))@(#__@#)_" + this.state.isSortedDescending)
+    });
+    console.log("@#(_))@(#__@#)_" + this.state.isSortedDescending);
     let aSortedList = booksArray.sort((a, b) => {
       if (!this.state.isSortedDescending) {
         this.setState({
-          sortBy: 'Descending'
-        })
-        return a.review_date.localeCompare(b.review_date)
+          sortBy: "Descending"
+        });
+        return a.review_date.localeCompare(b.review_date);
       } else {
         this.setState({
-          sortBy: 'Ascending'
-        })
-        return b.review_date.localeCompare(a.review_date)
+          sortBy: "Ascending"
+        });
+        return b.review_date.localeCompare(a.review_date);
       }
-    }
-    )
+    });
 
-    booksArray = aSortedList
-
-  }
+    booksArray = aSortedList;
+    isGenreChanged = false;
+  };
 
   convertToArray = (books) => {
     if (this.state.search == "") {
@@ -106,13 +103,13 @@ class BookListing extends Component {
   }
 
 
-  updateSearch = (event) => {
+  updateSearch = event => {
     this.setState({
       search: event.target.value
-    })
+    });
 
-    console.log("MLSMD:MSPD:L:SD<:  " + event.target.value)
-    booksArray = temp
+    console.log("MLSMD:MSPD:L:SD<:  " + event.target.value);
+    booksArray = temp;
     if (event.target.value != "") {
       let filtered = booksArray.filter(book => {
         return book.title.toLowerCase().indexOf(event.target.value) !== -1;
@@ -120,13 +117,17 @@ class BookListing extends Component {
 
       booksArray = filtered;
     }
-
-
-  }
+    isGenreChanged = false;
+  };
 
   render() {
     const { selectedOption } = this.state;
-    this.convertToArray(this.props.loadReviewPublicationsReducer.topReviewedBooksDetails)
+    if (!this.props.loadReviewPublicationsReducer.loading && isGenreChanged) {
+      booksArray = this.props.loadReviewPublicationsReducer
+        .topReviewedBooksDetails;
+      temp = booksArray;
+    }
+
 
     let booksList = [];
 
