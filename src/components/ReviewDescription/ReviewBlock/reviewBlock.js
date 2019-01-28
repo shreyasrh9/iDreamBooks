@@ -13,6 +13,8 @@ const reviewBlock = (props) => {
                     <h6>
                         <b>{props.reviewDetail.source}</b>
                     </h6>
+
+                    {/* Formatting date using moment */}
                     <span><b>Reviewed on</b> <Moment format="MMM DD YYYY">
                         {props.reviewDetail.review_date}
                     </Moment></span>
@@ -29,6 +31,7 @@ const reviewBlock = (props) => {
                         </span>
                     </div>
 
+                    {/* Populating the review rate */}
                     <StarRatings
                         rating={props.reviewDetail.star_rating}
                         starDimension="20px"

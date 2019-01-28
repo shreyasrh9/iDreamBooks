@@ -18,6 +18,9 @@ const bookSynopsisReview = (props) => {
         } else if (reviewDetails.book.critic_reviews[i].pos_or_neg == 'Negative') {
             numberOfNegatives += 1
         }
+
+        // Building ReviewBook components
+
         reviewsList.push(
             <ReviewBook key={i} reviewDetail={reviewDetails.book.critic_reviews[i]} title={reviewDetails.book.title} />
         )

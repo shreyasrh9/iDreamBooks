@@ -10,7 +10,7 @@ import {
 
 const genreDropdown = (props) => {
     return (
-        
+        // Genre dropdown component
         <DropdownItem className={style.genreList}>
             <Row className={style.dropDownValue}>
                 <Col className={style.colMenu}>{props.genre}</Col>

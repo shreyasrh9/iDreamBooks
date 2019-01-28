@@ -14,7 +14,7 @@ class BookReviewDetails extends Component {
     componentWillMount() {
         const query = new URLSearchParams(this.props.location.search);
         let searchKey = '';
-
+        // Extracting query.entries
         for (let param of query.entries()) {
             if (param[0] === 'searchKey') {
 
@@ -25,6 +25,8 @@ class BookReviewDetails extends Component {
                 imageUrl = param[1]
 
             }
+
+            // This loads the reviews based on the search key
             this.props.fetchReviews(searchKey)
         }
 
@@ -39,8 +41,10 @@ class BookReviewDetails extends Component {
         }
         return (
             <div>
+                {/* Loadinging the imported header component */}
                 <Header />
 
+                {/* Loadinging the ReviewDescription component */}
                 {this.props.loadReviewReducer.loadingReview ?
                     <ReviewDescription review={this.props.loadReviewReducer} imageUrl={imageUrl} reviewRatingPresent={reviewRatingPresent} />
                     : <Skeleton width={200} height={500} count={8} />
@@ -51,14 +55,18 @@ class BookReviewDetails extends Component {
     }
 }
 
+// Selecting the data from the store that the connected BookReviewDetails component needs
 const mapStateToProps = (state, ownProps) => {
     return {
         loadReviewReducer: state.loadReviewReducer,
     }
 }
 
+// Dispatching actions to the store. : Job actions present in the location ../../actions 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return bindActionCreators(jobActions, dispatch);
 }
 
+// Wrapped withRouter HOC to get access to the history object’s properties and the closest <Route>'s match
+// connect() function connects BookReviewDetails component to a Redux store
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BookReviewDetails));

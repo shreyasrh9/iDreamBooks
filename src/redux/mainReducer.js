@@ -18,9 +18,12 @@ import { loadReviewPublicationsReducer } from './reducers/loadReviewPublications
 
 import { loadReviewReducer } from './reducers/loadReviewReducer'
 
+
+// combine multiple reducers into a single one
 export const mainReducer = combineReducers({
     loadReviewPublicationsReducer: loadReviewPublicationsReducer,
     loadReviewReducer : loadReviewReducer
 })
 
-export const epics = (...args) => combineEpics(loadGenreListEpic, topPublicationsEpic, loadReviewsEpic)(...args, { ajax, retrieveViaAjax })
+// combine multiple epics into a single one and passing retrieveViaAjax as an argument which can be used while writing epics
+export const epics = (...args) => combineEpics(loadGenreListEpic, topPublicationsEpic, loadReviewsEpic)(...args, { retrieveViaAjax })

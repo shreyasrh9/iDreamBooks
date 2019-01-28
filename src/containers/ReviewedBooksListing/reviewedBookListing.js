@@ -21,7 +21,7 @@ let temp = []
 let loadingPage = true;
 let isGenreChanged = true;
 class ReviewedBookListing extends Component {
-
+  // Component state initialized
   state = {
     selectedOption: { "label": config.GENRES_VALUES[0], "value": config.GENRES[0] },
     isSortedDescending: true,
@@ -30,22 +30,26 @@ class ReviewedBookListing extends Component {
     loadingPage: true
   }
 
+  // Invoked immediately after ReviewedBookListing component is mounted 
   componentDidMount() {
+    // Calling the function which calls the epic with a type to load options for genre select box
     this.props.loadGenreSelectList()
   }
 
+  // Called on change of the genre select box to load the corresponding reviews of genre books
   handleChange = selectedOption => {
     isGenreChanged = true;
     this.setState({ selectedOption });
     this.props.hadleGenreChange(selectedOption);
   };
 
+
+  // Fetching reviews of selected book and navigating to review details
   fetchReviews = (searchKey, imageUrl) => {
     if (searchKey.indexOf(',') > -1) {
       searchKey = searchKey.split(',')[0]
     }
-
-
+    
     const queryParams = [];
     queryParams.push('searchKey=' + searchKey);
     queryParams.push('imageUrl=' + imageUrl);
@@ -57,19 +61,8 @@ class ReviewedBookListing extends Component {
     });
   }
 
-  sortByDate = books => {
-    console.log(JSON.stringify(booksArray[0]));
-
-    if (books === undefined) {
-    } else {
-      sortedList = booksArray.sort((a, b) => {
-        return a.review_date.localeCompare(b.review_date);
-      });
-    }
-    isGenreChanged = false;
-  };
-
-  sortByAscendingDate = () => {
+  // Sorting the books
+  sortByDate = () => {
     this.setState({
       isSortedDescending: !this.state.isSortedDescending
     });
@@ -92,17 +85,7 @@ class ReviewedBookListing extends Component {
     isGenreChanged = false;
   };
 
-  convertToArray = (books) => {
-    if (this.state.search == "") {
-      booksArray = []
-      for (var key in books) {
-        booksArray.push(books[key])
-      }
-      temp = booksArray
-    }
-  }
-
-
+  // Filtering the books 
   updateSearch = event => {
     this.setState({
       search: event.target.value
@@ -131,6 +114,7 @@ class ReviewedBookListing extends Component {
 
     let booksList = [];
 
+    // Building ReviewedBook components
     for (let i = 0; i < booksArray.length; i++) {
       booksList.push(
         <ReviewedBook key={i} bookDetails={booksArray[i]} bookClicked={this.fetchReviews} />
@@ -149,6 +133,7 @@ class ReviewedBookListing extends Component {
           <br />
           <Row>
             <Col sm="12" md={{ size: 6, offset: 3 }}>
+              {/* Genre select box */}
               <Select
                 value={selectedOption}
                 onChange={this.handleChange}
@@ -157,14 +142,14 @@ class ReviewedBookListing extends Component {
             </Col>
           </Row>
 
-
+          {/* Sorting and filter components */}
           <Row>
-            <span className={style.spanHeading} onClick={this.sortByAscendingDate}><b>Sort By Review Date {'  '}
+            <span className={style.spanHeading} onClick={this.sortByDate}><b>Sort By Review Date {'  '}
               {this.state.isSortedDescending ?
                 <FontAwesomeIcon icon={faAngleDoubleDown} />
                 : <FontAwesomeIcon icon={faAngleDoubleUp} />
               }
-              </b>
+            </b>
             </span>
           </Row>
           <br />
@@ -172,6 +157,7 @@ class ReviewedBookListing extends Component {
             <span className={style.spanHeading} ><b>Filter By Title {'  '}</b><input className={style.filterInput} value={this.state.search} onChange={this.updateSearch} /></span>
           </Row>
           <br />
+          {/* Skeleton componenet before loading review book lists  */}
           {
             loadingPage ?
               <div>
@@ -184,10 +170,8 @@ class ReviewedBookListing extends Component {
               : null
           }
         </Container>
-
-
-
-
+        
+        {/* Populating reviewed book lists */}
         <section className={style.books}>
           {booksList}
         </section>
@@ -197,14 +181,22 @@ class ReviewedBookListing extends Component {
   }
 }
 
+
+
+// Selecting the data from the store that the connected ReviewedBookListing component needs
 const mapStateToProps = (state, ownProps) => {
   return {
     loadReviewPublicationsReducer: state.loadReviewPublicationsReducer,
   }
 }
 
+
+// Dispatching actions to the store. : Job actions present in the location ../../actions 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return bindActionCreators(jobActions, dispatch);
 }
+
+// Wrapped withRouter HOC to get access to the history object’s properties and the closest <Route>'s match
+// connect() function connects ReviewedBookListing component to a Redux store
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ReviewedBookListing));

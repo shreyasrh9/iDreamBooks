@@ -1,6 +1,7 @@
 import * as actionTypes from './actionTypes'
 import * as config from '../config'
 
+// To load genre select options
 export function loadGenreSelectList() {
     return {
         type: actionTypes.LOADGENRESELECTLIST,
@@ -8,15 +9,17 @@ export function loadGenreSelectList() {
     }
 }
 
+// To load reviewed books based on genre selected
 export function hadleGenreChange(genre) {
-    return{
+    return {
         type: actionTypes.RECENTLYREVIEWEDTOPPUBLICATIONS,
         genre: genre.value
     }
 }
 
+// To fetch reviews based on book selected
 export function fetchReviews(searchKey) {
-    return{
+    return {
         type: actionTypes.LOADREVIEWS,
         searchKey: searchKey
     }

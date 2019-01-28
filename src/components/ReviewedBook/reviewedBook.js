@@ -25,6 +25,8 @@ const reviewedBook = (props) => (
                 <h3>{props.bookDetails.review_publication_name}</h3>
                 <span className={style.rating}><b>Rating</b>  </span><img className={style.rating_image} src={props.bookDetails.review_rating_image} />
                 <br />
+
+                {/* Formatting the date using moment */}
                 <span className={style.rating}><b>Reviewed on {'  '}</b>
                     <Moment format="MMM DD YYYY">
                         {props.bookDetails.review_date}

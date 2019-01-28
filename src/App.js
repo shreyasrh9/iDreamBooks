@@ -7,6 +7,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
+                {/* Setting the route path components */}
                 <Switch>
                     <Route path="/review" component={BookReviewDetails} />
                     <Route path="/" exact component={LandingPage} />
