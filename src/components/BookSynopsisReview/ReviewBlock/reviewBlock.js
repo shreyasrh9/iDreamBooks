@@ -11,9 +11,9 @@ const reviewBlock = (props) => {
             <Row>
                 <Col >
                     <h6>
-                        {props.reviewDetail.source}
+                        <b>{props.reviewDetail.source}</b>
                     </h6>
-                    <span>Reviewed on <Moment format="MMM DD YYYY">
+                    <span><b>Reviewed on</b> <Moment format="MMM DD YYYY">
                         {props.reviewDetail.review_date}
                     </Moment></span>
                 </Col>
@@ -38,7 +38,7 @@ const reviewBlock = (props) => {
 
                     <div>
                         <span>
-                            <a target="_blank" href={props.reviewDetail.review_link}><span className={style.fullReviewLink}>Read Full Review of {props.title}</span></a>
+                            <a target="_blank" href={props.reviewDetail.review_link}><span className={style.fullReviewLink}>Read Full Review of <b>{props.title}</b></span></a>
                         </span>
                     </div>
                 </Col>

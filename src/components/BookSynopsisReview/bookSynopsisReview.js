@@ -8,18 +8,27 @@ import ReviewBook from './ReviewBlock/reviewBlock'
 
 const bookSynopsisReview = (props) => {
     const reviewDetails = props.review.reviewDetails
+    let numberOfPositives = 0;
+    let numberOfNegatives = 0;
     let reviewsList = [];
 
     for (let i = 0; i < reviewDetails.book.review_count; i++) {
+        if(reviewDetails.book.critic_reviews[i].pos_or_neg == 'Positive'){
+            numberOfPositives += 1
+        }else if(reviewDetails.book.critic_reviews[i].pos_or_neg == 'Negative'){
+            numberOfNegatives += 1
+        }
         reviewsList.push(
             <ReviewBook key={i} reviewDetail={reviewDetails.book.critic_reviews[i]} title={reviewDetails.book.title} />
         )
     }
+
+
     return (
         <div>
             <Container>
                 <br />
-                <Row>
+                <Row className={style.reviewDescription}>
                     <Col xs="6" sm="4">
                         <img src={props.imageUrl} />
                     </Col>
@@ -50,8 +59,18 @@ const bookSynopsisReview = (props) => {
                     </Col>
                 </Row>
 
-
+                <Row className={style.reviewsRow}>
+                    <h5>Critics reviews for {reviewDetails.book.title}</h5>
+                </Row>
+                <Row className={style.reviewsRowSideDescription}>
+                    <h6 className={style.reviewsRowSubSideDescription}>All : {reviewDetails.book.review_count}</h6>
+                    <h6 className={style.reviewsRowSubSideDescription}>Positive : {numberOfPositives}</h6>
+                    <h6 className={style.reviewsRowSubSideDescription}>Negative : {numberOfNegatives}</h6>
+                </Row>
             </Container>
+
+
+
             <section className={style.reviews} classId="reviews">
                 {reviewsList}
             </section>
