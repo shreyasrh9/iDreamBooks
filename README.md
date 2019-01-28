@@ -28,7 +28,7 @@ An application which uses https://idreambooks.com/api to populate list of review
 
 ### Listing reviewed books :
 
-![image](https://res.cloudinary.com/shreyas/image/upload/v1548681648/Screenshot_2019-01-28_at_6.46.46_PM_yoc8w9.png)
+![image](https://res.cloudinary.com/shreyas/image/upload/v1548686184/Screenshot_2019-01-28_at_8.05.58_PM_faf02q.png)
 
 ### Review details :
 
