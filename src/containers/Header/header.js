@@ -49,7 +49,7 @@ class Header extends Component {
 
         return (
             <Navbar color="light" light expand="md" >
-                <NavbarBrand href="/"><img src={config.LOGO} /> </NavbarBrand>
+                <NavbarBrand><img src={config.LOGO} /> </NavbarBrand>
                 <Link to="/" ><span className={style.subTitle}>{config.SUBTITLE}</span></Link>
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>

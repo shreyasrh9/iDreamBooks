@@ -95,7 +95,7 @@ class ReviewedBookListing extends Component {
     booksArray = temp;
     if (event.target.value != "") {
       let filtered = booksArray.filter(book => {
-        return book.title.toLowerCase().indexOf(event.target.value) !== -1;
+        return book.title.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1;
       });
 
       booksArray = filtered;
@@ -141,7 +141,7 @@ class ReviewedBookListing extends Component {
               />
             </Col>
           </Row>
-
+          <br/>
           {/* Sorting and filter components */}
           <Row>
             <span className={style.spanHeading} onClick={this.sortByDate}><b>Sort By Review Date {'  '}
