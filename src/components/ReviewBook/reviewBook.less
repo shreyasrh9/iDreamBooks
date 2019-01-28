@@ -1,10 +1,27 @@
+@border-color: #eee;
+@box-shadow: #ccc;
 @nice-font-size: 14px;
 @nice-image-size: 16px;
+.reviewBook {
+    width: 400px;
+    padding: 16px;
+    text-align: center;
+    border: 1px solid @border-color;
+    box-shadow: 0 2px 3px @box-shadow;
+    margin: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
 
-.rating{
+.reviewBook:hover,
+.reviewBook:active {
+    background-color: @border-color;
+}
+
+.rating {
     font-size: @nice-font-size;
 }
 
-.rating_image{
+.rating_image {
     height: @nice-image-size;
 }

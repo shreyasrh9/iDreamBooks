@@ -1,6 +1,6 @@
 import React from 'react'
 import {Motion, spring} from 'react-motion';
-import './bookImage.css'
+import * as style from './bookImage.less'
 
 class BookImage extends React.Component {
   constructor() {
@@ -48,13 +48,13 @@ class BookImage extends React.Component {
             return (
               <div className='subcontainer'>
               <div
-                className='containerImage'
+                className={style.containerImage}
                 onMouseOver={this.handleHover.bind(null, true)} 
                 onMouseOut={this.handleHover.bind(null, false)}>
                 <img
                   style={styleImage}
                   src={this.props.imageLink}
-                  className='img' />
+                  className={style.img} />
                 <div className='overlay'>
                   <div className='title' style={styleTitle}>{this.props.title}</div>
                   <div className='subtitle' style={styleSubtitle}>

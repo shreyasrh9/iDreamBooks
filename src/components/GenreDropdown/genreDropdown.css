@@ -1,19 +1,6 @@
-.colMenu {
-    word-wrap: break-word;
-  }
-  
-.colMenu:hover {
-    background-color: #0c233f;
-    color: white;
-    border-radius: 5px;
-  }
-  
 .dropdown-menu {
     max-height: 500px !important;
     overflow-y: scroll;
   }
 
-.dropDownValue {
-  cursor: pointer;
-}
   
