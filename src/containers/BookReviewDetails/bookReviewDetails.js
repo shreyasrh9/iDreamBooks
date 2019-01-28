@@ -3,13 +3,13 @@ import { withRouter } from 'react-router-dom';
 import * as jobActions from '../../actions'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Header from '../../containers/Header/header'
-import BookSynopsisReview from '../../components/BookSynopsisReview/bookSynopsisReview'
+import Header from '../Header/header'
+import ReviewDescription from '../../components/ReviewDescription/reviewDescription'
 import Skeleton from 'react-loading-skeleton';
 
 
 let imageUrl = ''
-class Review extends Component {
+class BookReviewDetails extends Component {
 
     componentWillMount() {
         const query = new URLSearchParams(this.props.location.search);
@@ -42,7 +42,7 @@ class Review extends Component {
                 <Header />
 
                 {this.props.loadReviewReducer.loadingReview ?
-                    <BookSynopsisReview review={this.props.loadReviewReducer} imageUrl={imageUrl} reviewRatingPresent={reviewRatingPresent} />
+                    <ReviewDescription review={this.props.loadReviewReducer} imageUrl={imageUrl} reviewRatingPresent={reviewRatingPresent} />
                     : <Skeleton width={200} height={500} count={8} />
                 }
 
@@ -61,4 +61,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return bindActionCreators(jobActions, dispatch);
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Review));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BookReviewDetails));

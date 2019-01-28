@@ -1,12 +1,12 @@
 import React from 'react';
-import BookImage from '../ReviewBook/BookImage/bookImage'
+import BookImage from '../ReviewedBook/BookImage/bookImage'
 import { Row, Col } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuoteLeft, faQuoteRight } from '@fortawesome/free-solid-svg-icons'
-import * as style from './reviewBook.less';
+import * as style from './reviewedBook.less';
 import Moment from 'react-moment';
 
-const reviewBook = (props) => (
+const reviewedBook = (props) => (
     <div className={style.reviewBook} onClick={() => props.bookClicked(props.bookDetails.isbns, props.bookDetails.review_publication_logo)}>
         <Row>
             <Col>
@@ -35,4 +35,4 @@ const reviewBook = (props) => (
     </div>
 );
 
-export default reviewBook;
+export default reviewedBook;

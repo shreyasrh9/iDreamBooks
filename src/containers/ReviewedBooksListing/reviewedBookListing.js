@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col, Container } from 'reactstrap';
-import * as style from './bookListing.less'
+import * as style from './reviewedBookListing.less'
 import * as config from '../../config'
 import * as jobActions from '../../actions'
 import { bindActionCreators } from 'redux';
 import Select from 'react-select';
-import ReviewBook from '../../components/ReviewBook/reviewBook'
+import ReviewedBook from '../../components/ReviewedBook/reviewedBook'
 import { withRouter } from 'react-router-dom';
-import Header from '../../containers/Header/header'
+import Header from '../Header/header'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDoubleDown, faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons'
 
-import SkeletonReviewListing from '../../components/SkeltelonLoad/reviewListing'
+import SkeletonReviewListing from '../../components/SkeltelonLoad/reviewedListingSkeleton'
 
 
 
@@ -20,7 +20,7 @@ let booksArray = [];
 let temp = []
 let loadingPage = true;
 let isGenreChanged = true;
-class BookListing extends Component {
+class ReviewedBookListing extends Component {
 
   state = {
     selectedOption: { "label": config.GENRES_VALUES[0], "value": config.GENRES[0] },
@@ -133,7 +133,7 @@ class BookListing extends Component {
 
     for (let i = 0; i < booksArray.length; i++) {
       booksList.push(
-        <ReviewBook key={i} bookDetails={booksArray[i]} bookClicked={this.fetchReviews} />
+        <ReviewedBook key={i} bookDetails={booksArray[i]} bookClicked={this.fetchReviews} />
       )
     }
 
@@ -207,4 +207,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return bindActionCreators(jobActions, dispatch);
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BookListing));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ReviewedBookListing));

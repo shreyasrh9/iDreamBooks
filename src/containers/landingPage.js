@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import BookListing from '../containers/BooksListing/bookListing'
+import ReviewedBookListing from '../containers/ReviewedBooksListing/reviewedBookListing'
 
 import {
     Collapse,
@@ -18,7 +18,7 @@ class LandingPage extends Component {
     render() {
         return (
             <div>
-                <BookListing />
+                <ReviewedBookListing />
             </div>
         )
     }

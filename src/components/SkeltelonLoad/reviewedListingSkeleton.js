@@ -2,7 +2,7 @@ import React from 'react'
 import Skeleton from 'react-loading-skeleton';
 import { Row, Col } from 'reactstrap'
 
-const reviewListing = (props) => {
+const reviewedListingSkeleton = (props) => {
     return (
         <Row>
             <Col>
@@ -16,4 +16,4 @@ const reviewListing = (props) => {
     )
 }
 
-export default reviewListing
+export default reviewedListingSkeleton

@@ -2,7 +2,7 @@ import React from 'react'
 import { Row, Col, Container } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuoteLeft, faQuoteRight } from '@fortawesome/free-solid-svg-icons'
-import * as style from './bookSynopsisReview.less'
+import * as style from './reviewDescription.less'
 import ReviewBook from './ReviewBlock/reviewBlock'
 
 
@@ -13,9 +13,9 @@ const bookSynopsisReview = (props) => {
     let reviewsList = [];
 
     for (let i = 0; i < reviewDetails.book.review_count; i++) {
-        if(reviewDetails.book.critic_reviews[i].pos_or_neg == 'Positive'){
+        if (reviewDetails.book.critic_reviews[i].pos_or_neg == 'Positive') {
             numberOfPositives += 1
-        }else if(reviewDetails.book.critic_reviews[i].pos_or_neg == 'Negative'){
+        } else if (reviewDetails.book.critic_reviews[i].pos_or_neg == 'Negative') {
             numberOfNegatives += 1
         }
         reviewsList.push(
@@ -65,7 +65,7 @@ const bookSynopsisReview = (props) => {
                 <Row className={style.reviewsRowSideDescription}>
                     <h6 className={style.reviewsRowSubSideDescription}>All : {reviewDetails.book.review_count}</h6>
                     <h6 className={style.reviewsRowSubSideDescription}>Positive : {numberOfPositives}</h6>
-                    <h6 className={style.reviewsRowSubSideDescription}>Negative : {numberOfNegatives}</h6>
+                    <h6 style={{ paddingLeft: "18px" }}>Negative : {numberOfNegatives}</h6>
                 </Row>
             </Container>
 
