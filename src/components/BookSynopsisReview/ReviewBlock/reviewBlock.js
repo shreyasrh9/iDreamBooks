@@ -1,5 +1,5 @@
 import React from 'react';
-import './reviewBlock.css';
+import * as style from './reviewBlock.less';
 import Moment from 'react-moment';
 import { Row, Col } from 'reactstrap'
 import StarRatings from 'react-star-ratings'
@@ -7,7 +7,7 @@ import StarRatings from 'react-star-ratings'
 const reviewBlock = (props) => {
     console.log(JSON.stringify(props))
     return (
-        <div className="reviewBlock">
+        <div className={style.reviewBlock}>
             <Row>
                 <Col >
                     <h6>
@@ -18,7 +18,7 @@ const reviewBlock = (props) => {
                     </Moment></span>
                 </Col>
                 <Col>
-                    <img className="rating_image" src={props.reviewDetail.smiley_or_sad} />
+                    <img className={style.rating_image} src={props.reviewDetail.smiley_or_sad} />
                 </Col>
             </Row>
             <Row>
@@ -38,7 +38,7 @@ const reviewBlock = (props) => {
 
                     <div>
                         <span>
-                            <a target="_blank" href={props.reviewDetail.review_link}><span className="fullReviewLink">Read Full Review of {props.title}</span></a>
+                            <a target="_blank" href={props.reviewDetail.review_link}><span className={style.fullReviewLink}>Read Full Review of {props.title}</span></a>
                         </span>
                     </div>
                 </Col>

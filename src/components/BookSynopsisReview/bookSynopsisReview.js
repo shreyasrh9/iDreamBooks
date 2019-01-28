@@ -2,7 +2,7 @@ import React from 'react'
 import { Row, Col, Container } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuoteLeft, faQuoteRight } from '@fortawesome/free-solid-svg-icons'
-import './bookSynopsisReview.css'
+import * as style from './bookSynopsisReview.less'
 import ReviewBook from './ReviewBlock/reviewBlock'
 
 
@@ -23,7 +23,7 @@ const bookSynopsisReview = (props) => {
                     <Col xs="6" sm="4">
                         <img src={props.imageUrl} />
                     </Col>
-                    <Col className="reviewHeading">
+                    <Col className={style.reviewHeading}>
                         <h2>{reviewDetails.book.title}</h2>
                         <h4>by {reviewDetails.book.author}</h4>
                         <br />
@@ -33,20 +33,16 @@ const bookSynopsisReview = (props) => {
                                 :
                                 <div>
                                     <h5>No critic rating</h5>
-                                    <h6 className="reviewSpan">Waiting for minimum critic reviews</h6>
+                                    <h6 className={style.reviewSpan}>Waiting for minimum critic reviews</h6>
                                 </div>
 
                         }
-                        <br />
-                        <a href="#reviews">
-                            <h4 className="reviewHeading">See {reviewDetails.book.review_count} Critic Review</h4>
-                        </a>
                         <br />
                         <FontAwesomeIcon icon={faQuoteLeft} style={{ float: "left" }} />
                         <br />
                         <span>{reviewDetails.book.critic_reviews[0].snippet}</span>
                         <br />
-                        <span className="reviewSpan">- {reviewDetails.book.critic_reviews[0].source}</span>
+                        <span className={style.reviewSpan}>- {reviewDetails.book.critic_reviews[0].source}</span>
                         <br />
                         <FontAwesomeIcon icon={faQuoteRight} />
                         <br />
@@ -56,7 +52,7 @@ const bookSynopsisReview = (props) => {
 
 
             </Container>
-            <section className="reviews" classId="reviews">
+            <section className={style.reviews} classId="reviews">
                 {reviewsList}
             </section>
         </div>
