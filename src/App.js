@@ -10,8 +10,8 @@ class App extends Component {
                 {/* Setting the route path components */}
                 <Switch>
                     <Route path="/review" component={BookReviewDetails} />
-                    <Route path="/" exact component={LandingPage} />
-                    <Redirect to="/" />
+                    <Route path="/dreambook" exact component={LandingPage} />
+                    <Redirect to="/dreambook" />
                 </Switch>
                 
             </div>

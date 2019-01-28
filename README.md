@@ -26,11 +26,11 @@ An application which uses https://idreambooks.com/api to populate list of review
 
 ## Screenshots
 
-### Listing reviewed books
+### Listing reviewed books :
 
 ![image](https://res.cloudinary.com/shreyas/image/upload/v1548681648/Screenshot_2019-01-28_at_6.46.46_PM_yoc8w9.png)
 
-### Review details
+### Review details :
 
 ![image](https://res.cloudinary.com/shreyas/image/upload/v1548681834/Screenshot_2019-01-28_at_6.53.41_PM_dwbgmq.png)
  
