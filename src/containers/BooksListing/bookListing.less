@@ -1,12 +1,23 @@
 @heading-color : #0c233f;
-
+@nice-font-size : 14px;
 .heading{
     color: @heading-color;
-    // text-align: center;
+    text-align: center;
 }
 
 .spanHeading{
     color: @heading-color;
-    font-size: 14px;
+    font-size: @nice-font-size;
     cursor: pointer;
 }
+
+.books {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+    background-color: white;
+}
+
+  

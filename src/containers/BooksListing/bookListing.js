@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col, Container } from 'reactstrap';
-import './bookListing.css'
+import * as style from './bookListing.less'
 import * as config from '../../config'
 import * as jobActions from '../../actions'
 import { bindActionCreators } from 'redux';
@@ -145,7 +145,7 @@ class BookListing extends Component {
         <Header />
         <br />
         <Container>
-          <h2 className="heading">{config.LANDING_PAGE_HEADING}</h2>
+          <h2 className={style.heading}>{config.LANDING_PAGE_HEADING}</h2>
           <br />
           <Row>
             <Col sm="12" md={{ size: 6, offset: 3 }}>
@@ -159,7 +159,7 @@ class BookListing extends Component {
 
 
           <Row>
-            <span class="spanHeading" onClick={this.sortByAscendingDate}>Sort By Review Date {'  '}
+            <span className={style.spanHeading} onClick={this.sortByAscendingDate}>Sort By Review Date {'  '}
               {this.state.isSortedDescending ?
                 <FontAwesomeIcon icon={faAngleDoubleDown} />
                 : <FontAwesomeIcon icon={faAngleDoubleUp} />
@@ -168,7 +168,7 @@ class BookListing extends Component {
           </Row>
           <br />
           <Row>
-            <span class="spanHeading" >Filter By Title {'  '}<input className="filterInput" value={this.state.search} onChange={this.updateSearch} /></span>
+            <span className={style.spanHeading} >Filter By Title {'  '}<input className={style.filterInput} value={this.state.search} onChange={this.updateSearch} /></span>
           </Row>
           <br />
           {
@@ -187,7 +187,7 @@ class BookListing extends Component {
 
 
 
-        <section className="books">
+        <section className={style.books}>
           {booksList}
         </section>
 
