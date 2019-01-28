@@ -10,7 +10,7 @@ An application which uses https://idreambooks.com/api to populate list of review
 
 ## Frameworks used
 
-# React : 
+### React : 
 
  1. React facilitates the overall process of writing components
  2. It boosts productivity and facilitates further maintenance 
@@ -20,7 +20,7 @@ An application which uses https://idreambooks.com/api to populate list of review
  And the list goes on
 
 
-# Redux-observable : 
+### Redux-observable : 
 
  It helps in cancelling of async requests, error handling, managing state, etc in an efficient way
 
