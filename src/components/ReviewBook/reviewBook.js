@@ -23,9 +23,9 @@ const reviewBook = (props) => (
                 <FontAwesomeIcon icon={faQuoteRight} style={{ float: "right" }} />
                 <br />
                 <h3>{props.bookDetails.review_publication_name}</h3>
-                <span className={style.rating}>Rating  </span><img className={style.rating_image} src={props.bookDetails.review_rating_image} />
+                <span className={style.rating}><b>Rating</b>  </span><img className={style.rating_image} src={props.bookDetails.review_rating_image} />
                 <br />
-                <span className={style.rating}>Reviewed on {'  '}
+                <span className={style.rating}><b>Reviewed on {'  '}</b>
                     <Moment format="MMM DD YYYY">
                         {props.bookDetails.review_date}
                     </Moment>

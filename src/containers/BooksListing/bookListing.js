@@ -159,16 +159,17 @@ class BookListing extends Component {
 
 
           <Row>
-            <span className={style.spanHeading} onClick={this.sortByAscendingDate}>Sort By Review Date {'  '}
+            <span className={style.spanHeading} onClick={this.sortByAscendingDate}><b>Sort By Review Date {'  '}
               {this.state.isSortedDescending ?
                 <FontAwesomeIcon icon={faAngleDoubleDown} />
                 : <FontAwesomeIcon icon={faAngleDoubleUp} />
               }
+              </b>
             </span>
           </Row>
           <br />
           <Row>
-            <span className={style.spanHeading} >Filter By Title {'  '}<input className={style.filterInput} value={this.state.search} onChange={this.updateSearch} /></span>
+            <span className={style.spanHeading} ><b>Filter By Title {'  '}</b><input className={style.filterInput} value={this.state.search} onChange={this.updateSearch} /></span>
           </Row>
           <br />
           {
