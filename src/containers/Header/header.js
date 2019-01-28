@@ -41,7 +41,7 @@ class Header extends Component {
         let genreComponents = []
         let listComponents = []
 
-        for (let i = 0; i < genres.length; i ++) {
+        for (let i = 0; i < genres.length; i++) {
             genreComponents.push(<GenreDropDown key={i} genre={genresValue[i]} />)
         }
 
@@ -64,7 +64,7 @@ class Header extends Component {
 
 
                         <NavItem>
-                            <NavLink onClick={this.loginModal} className={style.loginModalLink}>Login</NavLink>
+                            <NavLink onClick={this.loginModal} className={style.loginModalLink}><b>Login</b></NavLink>
                         </NavItem>
                     </Nav>
                 </Collapse>

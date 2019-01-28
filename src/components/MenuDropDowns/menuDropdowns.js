@@ -9,7 +9,7 @@ const menuDropdowns = (props) => {
     return (
         <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav caret>
-                {props.heading}
+                <b>{props.heading}</b>
             </DropdownToggle>
             <DropdownMenu right>
                 {props.options}

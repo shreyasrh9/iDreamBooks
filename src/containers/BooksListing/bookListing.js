@@ -168,7 +168,7 @@ class BookListing extends Component {
             </span>
           </Row>
           <br />
-          <Row>
+          <Row className={style.filterRow}>
             <span className={style.spanHeading} ><b>Filter By Title {'  '}</b><input className={style.filterInput} value={this.state.search} onChange={this.updateSearch} /></span>
           </Row>
           <br />
