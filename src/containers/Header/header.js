@@ -4,6 +4,7 @@ import * as config from '../../config'
 import style from './header.less'
 import GenreDropDown from '../../components/GenreDropdown/genreDropdown'
 import MenuDropdowns from '../../components/MenuDropDowns/menuDropdowns'
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 
 import {
     Collapse,
@@ -20,7 +21,8 @@ class Header extends Component {
         super(props);
         this.toggle = this.toggle.bind(this);
         this.state = {
-            isOpen: false
+            isOpen: false,
+            
         };
     }
 
@@ -31,6 +33,8 @@ class Header extends Component {
         });
     }
 
+    
+
     render() {
         const genres = config.GENRES
         const genresValue = config.GENRES_VALUES
@@ -40,7 +44,7 @@ class Header extends Component {
 
         // Building GenreDropDown components
         for (let i = 0; i < genres.length; i++) {
-            genreComponents.push(<GenreDropDown key={i} genre={genresValue[i]} />)
+            genreComponents.push(<GenreDropDown key={i} genre={genresValue[i]} genreVal={genres[i]} />)
         }
 
         return (
@@ -49,10 +53,12 @@ class Header extends Component {
                 <Link to="/" ><span className={style.subTitle}>{config.SUBTITLE}</span></Link>
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
-                        <MenuDropdowns heading="Genres" options={genreComponents} />
+                        {/* Will uncomment this if it is required */}
+
+                        {/* <MenuDropdowns heading="Genres" options={genreComponents} />
                         <NavItem>
                             <NavLink onClick={this.loginModal} className={style.loginModalLink}><b>Login</b></NavLink>
-                        </NavItem>
+                        </NavItem> */}
                     </Nav>
                 </Collapse>
             </Navbar>

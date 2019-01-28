@@ -126,7 +126,7 @@ class ReviewedBookListing extends Component {
 
     return (
       <div>
-        <Header />
+        <Header/>
         <br />
         <Container>
           <h2 className={style.heading}>{config.LANDING_PAGE_HEADING}</h2>

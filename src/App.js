@@ -13,6 +13,7 @@ class App extends Component {
                     <Route path="/" exact component={LandingPage} />
                     <Redirect to="/" />
                 </Switch>
+                
             </div>
         );
     }
