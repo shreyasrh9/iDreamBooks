@@ -19,6 +19,7 @@ class LandingPage extends Component {
         return (
             <div>
                 {/* Loading reviewedBookListing componenet */}
+                <h1>Test</h1>
                 <ReviewedBookListing />
             </div>
         )
